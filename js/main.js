@@ -43,58 +43,47 @@ function initNavigation() {
 // Mobile menu functionality
 function initMobileMenu() {
     console.log('Initializing mobile menu...');
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuLinks = document.querySelectorAll('.mobile-menu__link');
+    // Use event delegation so this works even when the header is rendered later (React/Babel).
+    const getEls = () => ({
+        mobileMenuToggle: document.getElementById('mobile-menu-toggle'),
+        mobileMenu: document.getElementById('mobile-menu'),
+    });
 
-    if (mobileMenuToggle && mobileMenu) {
-        // Toggle mobile menu
-        mobileMenuToggle.addEventListener('click', function(e) {
+    const setMenuOpen = (open) => {
+        const { mobileMenuToggle, mobileMenu } = getEls();
+        if (!mobileMenuToggle || !mobileMenu) return;
+
+        mobileMenu.classList.toggle('active', open);
+        const icon = mobileMenuToggle.querySelector('.material-icons');
+        if (icon) icon.textContent = open ? 'close' : 'menu';
+    };
+
+    // Toggle button
+    document.addEventListener('click', function(e) {
+        const { mobileMenuToggle, mobileMenu } = getEls();
+        if (!mobileMenuToggle || !mobileMenu) return;
+
+        const toggleBtn = e.target.closest('#mobile-menu-toggle');
+        if (toggleBtn) {
             e.preventDefault();
-            mobileMenu.classList.toggle('active');
-            
-            // Change icon
-            const icon = this.querySelector('.material-icons');
-            if (icon) {
-                icon.textContent = mobileMenu.classList.contains('active') ? 'close' : 'menu';
-            }
-        });
+            setMenuOpen(!mobileMenu.classList.contains('active'));
+            return;
+        }
 
-        // Handle mobile menu links
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                console.log('Mobile menu clicked:', targetId);
-                
-                // Scroll to target
-                const targetElement = document.getElementById(targetId.substring(1));
-                if (targetElement) {
-                    targetElement.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-                
-                // Close mobile menu
-                mobileMenu.classList.remove('active');
-                const icon = mobileMenuToggle.querySelector('.material-icons');
-                if (icon) {
-                    icon.textContent = 'menu';
-                }
-            });
-        });
+        // Mobile menu link click
+        const mobileLink = e.target.closest('.mobile-menu__link');
+        if (mobileLink) {
+            // Let initNavigation handle scrolling, just close the menu.
+            setMenuOpen(false);
+            return;
+        }
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!mobileMenuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.remove('active');
-                const icon = mobileMenuToggle.querySelector('.material-icons');
-                if (icon) {
-                    icon.textContent = 'menu';
-                }
-            }
-        });
-    }
+        // Click outside closes the menu
+        if (mobileMenu.classList.contains('active')) {
+            const clickedInside = mobileMenu.contains(e.target) || mobileMenuToggle.contains(e.target);
+            if (!clickedInside) setMenuOpen(false);
+        }
+    });
 }
 
 // Scroll to top functionality

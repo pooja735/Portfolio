@@ -2,6 +2,15 @@
 
 A modern, responsive portfolio website showcasing my skills, projects, and experience in AI & ML Engineering, Python Development, and MERN Stack Development.
 
+## ⭐ Featured Projects (Top 3)
+
+- **AI-Based Malware Traffic Classification (Encrypted Traffic)**: Streamlit dashboard + ML pipeline to classify encrypted network flow traffic as benign or malicious.  
+  - GitHub: https://github.com/pooja735/AI-Based-Malware-Traffic-Classification-System-for-Encrypted-Network-Traffic.git
+- **Smart Parking Space & Traffic Flow Management System**: Real-time slot tracking, reservations, traffic monitoring, admin analytics, and automated payments.  
+  - GitHub: https://github.com/pooja735/Smart-Parking-Management-System.git
+- **Campus Management System**: Smart Canteen, Carpool Connect, Lost & Found, and dashboard with authentication and role-based access.  
+  - GitHub: https://github.com/pooja735/CampusManagementSystem.git
+
 ## 🚀 Features
 
 - **Modern Design**: Clean, professional design with glass-morphism effects
@@ -108,20 +117,46 @@ Pooja-Valleti-Portfolio/
 - Resume download
 
 ### Projects
+- AI-Based Malware Traffic Classification (Encrypted Traffic)
+- Smart Parking Space & Traffic Flow Management System
+- Campus Management System
 - TechStore E-commerce Website (MERN Stack)
 - Gesture-Controlled Virtual Mouse (MediaPipe)
 - MedMaster (ML/Flask)
 
 ### Skills
-- Programming Languages: Python, C, Java, C++
-- Web Technologies: HTML, CSS, JavaScript, React, Node.js
-- Databases: MongoDB, MySQL, Oracle DB
-- ML/AI: Pandas, Matplotlib, MediaPipe, Scikit-learn
-- Tools: GitHub, Microsoft Excel
+- Languages: Python, Java, C
+- Frontend: React.js, Tailwind CSS, Bootstrap, HTML5, CSS3
+- Backend & APIs: Node.js, Express.js, REST APIs, OpenAI API, JWT
+- ML/AI: TensorFlow, Scikit-learn, Pandas, Matplotlib, MediaPipe, OpenCV
+- Databases: MongoDB, MySQL, Oracle DB, Neo4J
+- Tools & Platforms: Git, GitHub, Linux, Flask
+- Cloud & DevOps: AWS, Azure (fundamentals)
+- Core Concepts: Data Structures & Algorithms, System Design, Distributed Systems
 
 ### Experience
 - AI Intern (Full-Time) - Cloudchip Technologies
 - AI Intern - Cloudchip Technologies
+
+### Certifications
+- AI For Everyone — Coursera
+- CCNAv7: Switching, Routing, and Wireless Essentials — Cisco
+- Red Hat OpenStack Administration 1 — Red Hat Academy
+- Developing Serverless Solutions on AWS - Course Supplement (OCS) — AWS
+- Snowflake Hands-On Essentials: Data Warehouse — Snowflake
+
+### Certifications (from resume)
+- AI For Everyone — Coursera
+- Cryptography and Hashing Fundamentals in Python and Java — Coursera
+- CCNAv7: Switching, Routing, and Wireless Essentials — Cisco
+- Red Hat OpenStack Administration 1 — Red Hat Academy
+- Python Basics — HackerRank
+- Blockchain and Cryptocurrency — Coursera
+- C programming for Beginners — Udemy
+- Introduction to Big Data with Spark and Hadoop — Coursera
+- Principles of Secure Coding — Coursera
+- Information Theory and Error Control Coding — Udemy
+- Hackathon Turing Hacks 1.0 — Manipal University Jaipur
 
 ### Education
 - M.Tech in Computer Science Engineering - Amrita University Coimbatore (2025 - Present)
@@ -189,6 +224,7 @@ Feel free to fork this project and customize it for your own portfolio!
 - **Email**: poojavalleti04@gmail.com
 - **GitHub**: [pooja735](https://github.com/pooja735)
 - **LinkedIn**: [valleti-pooja-545a36242](https://www.linkedin.com/in/valleti-pooja-545a36242/)
+- **Resume**: https://drive.google.com/file/d/1fI1S8NoXLAv3YayVOqdpmE9hhs5MI-ck/view?usp=sharing
 
 ---
 

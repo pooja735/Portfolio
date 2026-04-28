@@ -21,6 +21,7 @@ function Header() {
 					<a href="#about" className="link link--nav">About</a>
 					<a href="#projects" className="link link--nav">Projects</a>
 					<a href="#skills" className="link link--nav">Skills</a>
+					<a href="#certifications" className="link link--nav">Certifications</a>
 					<a href="#experience" className="link link--nav">Experience</a>
 					<a href="#education" className="link link--nav">Education</a>
 					<a href="#contact" className="link link--nav">Contact</a>
@@ -36,6 +37,7 @@ function Header() {
 				<a href="#about" className="mobile-menu__link">About</a>
 				<a href="#projects" className="mobile-menu__link">Projects</a>
 				<a href="#skills" className="mobile-menu__link">Skills</a>
+				<a href="#certifications" className="mobile-menu__link">Certifications</a>
 				<a href="#experience" className="mobile-menu__link">Experience</a>
 				<a href="#education" className="mobile-menu__link">Education</a>
 				<a href="#contact" className="mobile-menu__link">Contact</a>
@@ -53,7 +55,7 @@ function Hero() {
 					<h2 className="hero-role text-reveal">AI & ML Engineer | Python Developer | MERN Stack Developer</h2>
 					<p className="hero-desc text-reveal">AI and Full Stack Developer passionate about solving real-world problems using technology. Experienced in building intelligent applications, virtual interfaces, and scalable web platforms. Enthusiastic about learning and applying ML and system design.</p>
 					<div className="hero-actions">
-						<a href="https://drive.google.com/file/d/16j9tucJlzYRAp4IM5tqwFXAHZB-qODFl/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+						<a href="https://drive.google.com/file/d/1fI1S8NoXLAv3YayVOqdpmE9hhs5MI-ck/view?usp=sharing" target="_blank" rel="noopener noreferrer">
 							<span className="btn btn--outline btn--animated">View Resume</span>
 						</a>
 						<div className="about__social">
@@ -81,28 +83,20 @@ function Hero() {
 
 function App() {
 	useEffect(() => {
-		// Remove any pre-existing sections to avoid duplicates
-		const headerEl = document.querySelector('.header');
-		const heroEl = document.querySelector('.hero-section');
-		const projectsEl = document.getElementById('projects');
-		const skillsEl = document.getElementById('skills');
-		const experienceEl = document.getElementById('experience');
-		const educationEl = document.getElementById('education');
-		const contactEl = document.getElementById('contact');
-		const footerEl = document.querySelector('footer.footer');
-		const scrollTopEl = document.getElementById('scroll-top');
-		if (headerEl && headerEl.parentElement && headerEl.parentElement.id !== 'react-root') {
-			headerEl.remove();
-		}
-		if (heroEl && heroEl.parentElement && heroEl.parentElement.id !== 'react-root') {
-			heroEl.remove();
-		}
-		[projectsEl, skillsEl, experienceEl, educationEl, contactEl, footerEl, scrollTopEl]
-			.filter(Boolean)
+		// Remove any pre-existing static sections to avoid duplicates.
+		// We remove any matching element that is NOT inside the React mount.
+		const isOutsideReactRoot = (el) => !!el && !el.closest('#react-root');
+
+		document.querySelectorAll('.header, .hero-section, footer.footer, #scroll-top').forEach((el) => {
+			if (isOutsideReactRoot(el)) el.remove();
+		});
+
+		document
+			.querySelectorAll(
+				'#projects, #skills, #certifications, #experience, #education, #contact'
+			)
 			.forEach((el) => {
-				if (el && el.parentElement && el.parentElement.id !== 'react-root') {
-					el.remove();
-				}
+				if (isOutsideReactRoot(el)) el.remove();
 			});
 	}, []);
 
@@ -115,6 +109,57 @@ function App() {
 				<section id="projects" className="section projects fade-in-on-scroll">
 					<h2 className="section__title">Projects</h2>
 					<div className="projects__grid">
+						<div className="project glass-card hover-lift">
+							<h3 className="project__title">AI-Based Malware Traffic Classification (Encrypted Traffic)</h3>
+							<p className="project__description">Streamlit dashboard + ML pipeline to classify encrypted network flow traffic as benign or malicious using CIC flow-level statistical features (no decryption).</p>
+							<div className="project__stack">
+								<span className="project__stack-item">Python</span>
+								<span className="project__stack-item">Streamlit</span>
+								<span className="project__stack-item">scikit-learn</span>
+								<span className="project__stack-item">Random Forest</span>
+							</div>
+							<div className="project__links">
+								<a href="https://github.com/pooja735/AI-Based-Malware-Traffic-Classification-System-for-Encrypted-Network-Traffic.git" className="link link--icon hover-glow" target="_blank" rel="noopener noreferrer" aria-label="View Source Code">
+									<svg className="social-icon" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+									</svg>
+								</a>
+							</div>
+						</div>
+						<div className="project glass-card hover-lift">
+							<h3 className="project__title">Smart Parking Space & Traffic Flow Management System</h3>
+							<p className="project__description">Full-stack parking management system with real-time slot tracking, smart reservations, traffic monitoring, admin analytics, and automated payments.</p>
+							<div className="project__stack">
+								<span className="project__stack-item">React</span>
+								<span className="project__stack-item">Express.js</span>
+								<span className="project__stack-item">MySQL</span>
+								<span className="project__stack-item">Vite</span>
+							</div>
+							<div className="project__links">
+								<a href="https://github.com/pooja735/Smart-Parking-Management-System.git" className="link link--icon hover-glow" target="_blank" rel="noopener noreferrer" aria-label="View Source Code">
+									<svg className="social-icon" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+									</svg>
+								</a>
+							</div>
+						</div>
+						<div className="project glass-card hover-lift">
+							<h3 className="project__title">Campus Management System</h3>
+							<p className="project__description">Web app for campus services including Smart Canteen, Carpool Connect, Lost & Found, and a central dashboard with authentication and role-based access.</p>
+							<div className="project__stack">
+								<span className="project__stack-item">Node.js</span>
+								<span className="project__stack-item">Express.js</span>
+								<span className="project__stack-item">MongoDB</span>
+								<span className="project__stack-item">Bootstrap</span>
+							</div>
+							<div className="project__links">
+								<a href="https://github.com/pooja735/CampusManagementSystem.git" className="link link--icon hover-glow" target="_blank" rel="noopener noreferrer" aria-label="View Source Code">
+									<svg className="social-icon" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+									</svg>
+								</a>
+							</div>
+						</div>
 						<div className="project glass-card hover-lift">
 							<h3 className="project__title">TechStore E-commerce Website</h3>
 							<p className="project__description">Full-stack MERN-based e-commerce platform with secure authentication, product catalog, cart, order tracking, and OpenAI-powered chatbot for instant support on shipping, payments, and more.</p>
@@ -172,9 +217,69 @@ function App() {
 				<section className="section skills fade-in-on-scroll" id="skills">
 					<h2 className="section__title">Skills</h2>
 					<div className="skills__grid">
-						{['Python','C','Java','C++','HTML','CSS','SQL','JavaScript','React','Node.js','MongoDB','Express.js','MySQL','Oracle DB','Pandas','Matplotlib','Mediapipe','Scikit-learn','GitHub','Microsoft Excel'].map((s) => (
+						{[
+							'Python',
+							'Java',
+							'C',
+							'HTML5',
+							'CSS3',
+							'JavaScript',
+							'React.js',
+							'Node.js',
+							'Express.js',
+							'REST APIs',
+							'JWT',
+							'Tailwind CSS',
+							'Bootstrap',
+							'MongoDB',
+							'MySQL',
+							'Oracle DB',
+							'Neo4J',
+							'TensorFlow',
+							'scikit-learn',
+							'Pandas',
+							'Matplotlib',
+							'MediaPipe',
+							'OpenCV',
+							'Flask',
+							'OpenAI API',
+							'Git',
+							'GitHub',
+							'Linux',
+							'AWS (fundamentals)',
+							'Azure (fundamentals)',
+							'Data Structures & Algorithms',
+							'System Design',
+							'Distributed Systems',
+						].map((s) => (
 							<div key={s} className="skill-item stagger-item">{s}</div>
 						))}
+					</div>
+				</section>
+
+				<section id="certifications" className="section experience fade-in-on-scroll">
+					<h2 className="section__title">Certifications</h2>
+					<div className="timeline">
+						<div className="timeline-item glass-card hover-lift">
+							<div className="timeline-dot"></div>
+							<div className="timeline-content">
+								<ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
+									<li>AI For Everyone — Coursera</li>
+									<li>Cryptography and Hashing Fundamentals in Python and Java — Coursera</li>
+									<li>Python Basics — HackerRank</li>
+									<li>Blockchain and Cryptocurrency — Coursera</li>
+									<li>C programming for Beginners — Udemy</li>
+									<li>Introduction to Big Data with Spark and Hadoop — Coursera</li>
+									<li>Principles of Secure Coding — Coursera</li>
+									<li>Information Theory and Error Control Coding — Udemy</li>
+									<li>Hackathon Turing Hacks 1.0 — Manipal University Jaipur</li>
+									<li>CCNAv7: Switching, Routing, and Wireless Essentials — Cisco</li>
+									<li>Red Hat OpenStack Administration 1 — Red Hat Academy</li>
+									<li>Developing Serverless Solutions on AWS - Course Supplement (OCS) — AWS</li>
+									<li>Snowflake Hands-On Essentials: Data Warehouse — Snowflake</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</section>
 
@@ -187,12 +292,14 @@ function App() {
 								<h3 className="experience__title">AI Intern (Full-Time)</h3>
 								<p className="experience__company">Cloudchip Technologies</p>
 								<p className="experience__period">Feb 2025 - June 2025</p>
-								<p className="experience__description">Built a full-stack e-commerce application using MERN stack, achieving 95% faster page load and a 30% rise in engagement. Designed modern UI with Tailwind CSS and Bootstrap. Integrated an OpenAI-powered chatbot, reducing support queries by 40%.</p>
+								<p className="experience__description">Built a scalable e-commerce platform using the MERN stack. Developed REST APIs with JWT authentication and optimized MongoDB queries for performance. Improved page load time by 95% and increased user engagement by 30%. Integrated an AI chatbot using OpenAI API, reducing support queries by 40%.</p>
 								<div className="experience__technologies">
 									<span className="tech-tag">MongoDB</span>
 									<span className="tech-tag">Express.js</span>
 									<span className="tech-tag">React</span>
 									<span className="tech-tag">Node.js</span>
+									<span className="tech-tag">REST APIs</span>
+									<span className="tech-tag">JWT</span>
 									<span className="tech-tag">OpenAI API</span>
 									<span className="tech-tag">Tailwind CSS</span>
 									<span className="tech-tag">Bootstrap</span>
@@ -205,12 +312,13 @@ function App() {
 								<h3 className="experience__title">AI Intern</h3>
 								<p className="experience__company">Cloudchip Technologies</p>
 								<p className="experience__period">June 2024 - Sept 2024</p>
-								<p className="experience__description">Developed a gesture-controlled virtual mouse using MediaPipe and Pybind11. Achieved over 90% gesture accuracy and real-time response under 100ms. Enhanced usability for accessibility and contactless systems.</p>
+								<p className="experience__description">Built a gesture-controlled system using MediaPipe and OpenCV for real-time interaction. Implemented CNN models achieving 95% accuracy with under 100ms latency. Optimized the real-time processing pipeline for efficient gesture recognition.</p>
 								<div className="experience__technologies">
 									<span className="tech-tag">MediaPipe</span>
 									<span className="tech-tag">Pybind11</span>
 									<span className="tech-tag">OpenCV</span>
 									<span className="tech-tag">TensorFlow</span>
+									<span className="tech-tag">CNN</span>
 								</div>
 							</div>
 						</div>
@@ -224,8 +332,8 @@ function App() {
 							<div className="education__header">
 								<h3 className="education__degree">M.Tech in Computer Science Engineering</h3>
 								<p className="education__institution">Amrita Vishwa Vidyapeetham, Coimbatore</p>
-								<p className="education__period">2025 - Present</p>
-								<p className="education__gpa">Pursuing</p>
+								<p className="education__period">Jul 2025 - Present</p>
+								<p className="education__gpa">GPA: 7.15</p>
 							</div>
 							<p className="education__description">Pursuing Master's degree in Computer Science Engineering with focus on Full-stack development, advanced algorithms, machine learning, and software engineering principles.</p>
 						</div>
@@ -234,8 +342,8 @@ function App() {
 							<div className="education__header">
 								<h3 className="education__degree">B.Tech in Computer & Communication Engineering</h3>
 								<p className="education__institution">Manipal University Jaipur</p>
-								<p className="education__period">2021 - 2025</p>
-								<p className="education__gpa">7.5 CGPA</p>
+								<p className="education__period">Oct 2021 - Jul 2025</p>
+								<p className="education__gpa">GPA: 7.38</p>
 							</div>
 							<p className="education__description">Completed Bachelor's degree in Computer & Communication Engineering with a specialization in Cyber Security, and a strong focus on AI, ML, and full-stack development.</p>
 						</div>
