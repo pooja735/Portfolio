@@ -259,27 +259,30 @@ function App() {
 
 				<section id="certifications" className="section experience fade-in-on-scroll">
 					<h2 className="section__title">Certifications</h2>
-					<div className="timeline">
-						<div className="timeline-item glass-card hover-lift">
-							<div className="timeline-dot"></div>
-							<div className="timeline-content">
-								<ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
-									<li>AI For Everyone — Coursera</li>
-									<li>Cryptography and Hashing Fundamentals in Python and Java — Coursera</li>
-									<li>Python Basics — HackerRank</li>
-									<li>Blockchain and Cryptocurrency — Coursera</li>
-									<li>C programming for Beginners — Udemy</li>
-									<li>Introduction to Big Data with Spark and Hadoop — Coursera</li>
-									<li>Principles of Secure Coding — Coursera</li>
-									<li>Information Theory and Error Control Coding — Udemy</li>
-									<li>Hackathon Turing Hacks 1.0 — Manipal University Jaipur</li>
-									<li>CCNAv7: Switching, Routing, and Wireless Essentials — Cisco</li>
-									<li>Red Hat OpenStack Administration 1 — Red Hat Academy</li>
-									<li>Developing Serverless Solutions on AWS - Course Supplement (OCS) — AWS</li>
-									<li>Snowflake Hands-On Essentials: Data Warehouse — Snowflake</li>
-								</ul>
-							</div>
-						</div>
+					<div className="certifications__grid">
+						{[
+							'AI For Everyone — Coursera',
+							'Cryptography and Hashing Fundamentals in Python and Java — Coursera',
+							'Python Basics — HackerRank',
+							'Blockchain and Cryptocurrency — Coursera',
+							'C programming for Beginners — Udemy',
+							'Introduction to Big Data with Spark and Hadoop — Coursera',
+							'Principles of Secure Coding — Coursera',
+							'Information Theory and Error Control Coding — Udemy',
+							'Hackathon Turing Hacks 1.0 — Manipal University Jaipur',
+							'CCNAv7: Switching, Routing, and Wireless Essentials — Cisco',
+							'Red Hat OpenStack Administration 1 — Red Hat Academy',
+							'Developing Serverless Solutions on AWS - Course Supplement (OCS) — AWS',
+							'Snowflake Hands-On Essentials: Data Warehouse — Snowflake',
+						].map((cert) => {
+							const [title, org] = cert.split(' — ');
+							return (
+								<div key={cert} className="certification-card glass-card hover-lift">
+									<h3 className="certification-card__title">{title}</h3>
+									<p className="certification-card__issuer">{org}</p>
+								</div>
+							);
+						})}
 					</div>
 				</section>
 

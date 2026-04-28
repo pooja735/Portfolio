@@ -663,6 +663,42 @@
   font-weight: 500;
 }
 
+/* Certifications Section */
+.certifications__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.certification-card {
+  padding: 1.25rem 1.1rem;
+  border-left: 4px solid var(--clr-primary);
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.certification-card__title {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+  color: var(--clr-fg-alt);
+}
+
+.certification-card__issuer {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(102, 126, 234, 0.12);
+  color: var(--clr-primary);
+}
+
 /* Education Section */
 .education__container {
   display: flex;
@@ -970,6 +1006,10 @@
   
   .timeline-dot {
     left: -45px !important;
+  }
+
+  .certifications__grid {
+    grid-template-columns: 1fr;
   }
 }
 
