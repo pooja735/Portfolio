@@ -2,8 +2,8 @@
 class ThemeManager {
     constructor() {
         this.currentTheme = localStorage.getItem('theme') || 'light';
-        this.themeToggle = document.getElementById('theme-toggle');
-        this.themeIcon = this.themeToggle?.querySelector('.material-icons');
+        this.themeToggle = null;
+        this.themeIcon = null;
         
         this.init();
     }
@@ -12,12 +12,16 @@ class ThemeManager {
         // Set initial theme
         this.setTheme(this.currentTheme);
         
-        // Add event listener for theme toggle
-        if (this.themeToggle) {
-            this.themeToggle.addEventListener('click', () => {
-                this.toggleTheme();
-            });
-        }
+        // Keep references in sync because header is rendered by React.
+        this.refreshToggleRefs();
+
+        // Delegated click handling ensures theme toggle works even if button is mounted later.
+        document.addEventListener('click', (e) => {
+            const toggleBtn = e.target.closest('#theme-toggle');
+            if (!toggleBtn) return;
+            this.refreshToggleRefs();
+            this.toggleTheme();
+        });
         
         // Add keyboard shortcut for theme toggle (Ctrl/Cmd + T)
         document.addEventListener('keydown', (e) => {
@@ -33,6 +37,7 @@ class ThemeManager {
     
     setTheme(theme) {
         const body = document.body;
+        this.refreshToggleRefs();
         
         // Remove existing theme classes
         body.classList.remove('light', 'dark');
@@ -54,6 +59,11 @@ class ThemeManager {
         
         // Dispatch custom event for theme change
         document.dispatchEvent(new CustomEvent('themeChange', { detail: { theme } }));
+    }
+
+    refreshToggleRefs() {
+        this.themeToggle = document.getElementById('theme-toggle');
+        this.themeIcon = this.themeToggle?.querySelector('.material-icons') || null;
     }
     
     toggleTheme() {
