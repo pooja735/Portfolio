@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initMobileMenu();
     initScrollToTop();
-    initThemeToggle();
     initAnimations();
     initTypingAnimation();
 });
@@ -96,24 +95,6 @@ function initScrollToTop() {
                 scrollTopButton.classList.add('visible');
             } else {
                 scrollTopButton.classList.remove('visible');
-            }
-        });
-    }
-}
-
-// Theme toggle functionality
-function initThemeToggle() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark');
-            body.classList.toggle('light');
-            
-            const icon = themeToggle.querySelector('.material-icons');
-            if (icon) {
-                icon.textContent = body.classList.contains('dark') ? 'light_mode' : 'dark_mode';
             }
         });
     }
